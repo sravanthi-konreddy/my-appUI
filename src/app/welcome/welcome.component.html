@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>
+  welcome {{user}}
+</p>
+<div *ngFor="let book of data" class="col-sm-4 panel panel-default">
+  <img src="\assets\images\{{book.id}}.JPG" alt="image not found" height="120" width="100">
+  <p>{{book.id}}</p>
+  <p>{{book.title}}</p>
+  <p>{{book.author}}</p>
+  <button (click)="review(book.id)" class="btn btn-secondary">Review</button>
+</div>
+<a routerLink="/logout"><button>logout</button></a>
+
+
+
+
+</body>
+</html>
+
+
+
