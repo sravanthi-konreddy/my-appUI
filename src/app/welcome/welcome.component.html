@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+
 <p>
   welcome {{user}}
 </p>
-<div *ngFor="let book of data" class="col-sm-4 panel panel-default">
+<div *ngFor="let book of data" class=" col col-sm ">
   <img src="\assets\images\{{book.id}}.JPG" alt="image not found" height="120" width="100">
   <p>{{book.id}}</p>
   <p>{{book.title}}</p>
@@ -18,11 +11,28 @@
 </div>
 <a routerLink="/logout"><button>logout</button></a>
 
+<ng-template #tempId let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    
+  </div>
+
+  <div class="modal-body">
+    <p>Hello Here!!!</p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()">
+  <ng-container *ngTemplateOutlet="tempId"></ng-container>
+</nz-modal>
 
 
 
-</body>
-</html>
+
 
 
 

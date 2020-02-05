@@ -8,13 +8,14 @@ import{Book} from './../model/book';
 import { filter, map, } from 'rxjs/operators';
 import { pipe, range, timer, zip } from 'rxjs';
 
+
 import {NgbModal, ModalDismissReasons,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-export class NgbdModalContent {
+/*export class NgbdModalContent {
   @Input() name;
 
   constructor(public activeModal: NgbActiveModal) {}
-}
+}*/
 
 @Component({
   selector: 'app-welcome',
@@ -28,7 +29,8 @@ export class WelcomeComponent implements OnInit {
   
 
   constructor(private route: ActivatedRoute,
-    private router: Router,private userIdle: UserIdleService,private _authService: MyAuthService, private welcomeServi: WelcomeService,private modalService: NgbModal
+    private router: Router,private userIdle: UserIdleService,private _authService: MyAuthService, 
+    private welcomeServi: WelcomeService,private modalService: NgbModal
    ) {this.user=this.route.snapshot.paramMap.get('id');
    console.log(this.user);
   }
@@ -56,8 +58,12 @@ export class WelcomeComponent implements OnInit {
     this.popupVisisble=true;
     console.log("in review::")
     console.log(input);
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.name = input.toString;
+    
+    
+  }
+  close()
+  {
+    this.popupVisisble=false
   }
 
 }
