@@ -4,6 +4,7 @@ import { UserIdleService } from 'angular-user-idle';
 import { MyAuthService } from '../my-auth.service';
 import{WelcomeService}from '../welcome.service';
 import{Book} from './../model/book';
+import { FormGroup, FormControl ,Validators} from '@angular/forms';
 //import {}from '../../'
 import { filter, map, } from 'rxjs/operators';
 import { pipe, range, timer, zip } from 'rxjs';
@@ -26,6 +27,20 @@ export class WelcomeComponent implements OnInit {
   user: any;
   data:Book[];
   popupVisisble:boolean=false;
+  currentRate:number=0;
+  bookID:number;
+
+  reviewForm=new FormGroup({
+    
+    
+  })
+
+  ctrl = new FormControl(null, Validators.required);
+
+  
+ 
+  
+
   
 
   constructor(private route: ActivatedRoute,
@@ -58,12 +73,21 @@ export class WelcomeComponent implements OnInit {
     this.popupVisisble=true;
     console.log("in review::")
     console.log(input);
+    this.bookID=input;
     
     
   }
   close()
   {
     this.popupVisisble=false
+  }
+
+  onSubmit(val)
+  {
+    console.log("user id::"+this.user)
+    console.log('book id::'+this.bookID);
+    console.log('rating::'+val)
+    console.log("insubmit!!!!")
   }
 
 }

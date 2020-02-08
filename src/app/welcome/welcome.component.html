@@ -11,22 +11,30 @@
 </div>
 <a routerLink="/logout"><button>logout</button></a>
 
-<ng-template #tempId let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+<ng-template #tempId >
+  
+
+    <div class="form-group">
+      <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="form-group text-center border border-light p-5">
+      <div class="form-group">
+        <label>
+          Rate:
+          <ngb-rating [formControl]="ctrl" [(rate)]="currentRate" ></ngb-rating>
+        </label>
+      </div>
+      
+       
+      </form>
+      </div>
+
+
     
-  </div>
-
-  <div class="modal-body">
-    <p>Hello Here!!!</p>
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
+      
+    
+  
 </ng-template>
 
-<nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()">
+<nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()" (nzOnOk)="onSubmit(currentRate)">
   <ng-container *ngTemplateOutlet="tempId"></ng-container>
 </nz-modal>
 
