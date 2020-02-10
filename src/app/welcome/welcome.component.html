@@ -2,12 +2,13 @@
 <p>
   welcome {{user}}
 </p>
+<div *ngIf="success ">{{successMsg}} for {{booktitle}}</div>
 <div *ngFor="let book of data" class=" col col-sm ">
   <img src="\assets\images\{{book.id}}.JPG" alt="image not found" height="120" width="100">
   <p>{{book.id}}</p>
   <p>{{book.title}}</p>
   <p>{{book.author}}</p>
-  <button (click)="review(book.id)" class="btn btn-secondary">Review</button>
+  <button (click)="review(book.id,book.title)" class="btn btn-secondary">Review</button>
 </div>
 <a routerLink="/logout"><button>logout</button></a>
 
@@ -18,8 +19,14 @@
       <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="form-group text-center border border-light p-5">
       <div class="form-group">
         <label>
-          Rate:
-          <ngb-rating [formControl]="ctrl" [(rate)]="currentRate" ></ngb-rating>
+          Rating:
+          <ngb-rating formControlName="ctrl" [(rate)]="currentRate" ></ngb-rating>
+        </label>
+      </div>
+      <div>
+        <label>
+          Review:
+          <textarea formControlName="review1" rows="4" cols="50"></textarea>
         </label>
       </div>
       
@@ -34,7 +41,7 @@
   
 </ng-template>
 
-<nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()" (nzOnOk)="onSubmit(currentRate)">
+<nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()" (nzOnOk)="onSubmit(reviewForm.value)">
   <ng-container *ngTemplateOutlet="tempId"></ng-container>
 </nz-modal>
 
