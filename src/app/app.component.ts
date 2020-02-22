@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { WelcomeService } from './welcome.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private welcomeServi: WelcomeService) {}
+
+  
   title = 'ang-prac';
 }
