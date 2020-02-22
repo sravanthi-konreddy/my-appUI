@@ -17,4 +17,12 @@ export class WelcomeService {
     //.subscribe(data1=>this.data=data1)  
     //.pipe(console.log("after"))
   }
+
+  solveSudoku()
+  {
+    console.log("before Sudoku hit");
+    return this.http.get<string>("http://localhost:8080/demoapi/api/solveSudoku")
+  }
+
+
 }

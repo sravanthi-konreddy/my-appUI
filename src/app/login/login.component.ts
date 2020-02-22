@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   loginForm=new FormGroup({
     username: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
+    area:new FormControl('')
   })
 
   constructor(private router: Router,private loginServ:LoginService) { 
@@ -41,7 +42,16 @@ export class LoginComponent implements OnInit {
     .subscribe(res=>{this.isValid=res;
       if(this.isValid)
       {
-        this.router.navigate(['/welcome',this.loginForm.value["username"]]);
+        if(this.loginForm.value['area']=='book')
+        {
+          this.router.navigate(['/welcome',this.loginForm.value["username"]]);
+        }
+        else if(this.loginForm.value['area']=='play')
+        {
+          console.log('in play console')
+          this.router.navigate(['/sudoku'])
+        }
+        
       }
       else{
         this.errorMsg="Invalid Username or Password";

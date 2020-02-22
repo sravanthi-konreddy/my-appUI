@@ -10,6 +10,7 @@
   <p>{{book.author}}</p>
   <button (click)="review(book.id,book.title)" class="btn btn-secondary">Review</button>
 </div>
+<button (click)="solveSudoku()">solve</button>
 <a routerLink="/logout"><button>logout</button></a>
 
 <ng-template #tempId >
@@ -40,6 +41,7 @@
     
   
 </ng-template>
+
 
 <nz-modal *ngIf="popupVisisble" [(nzVisible)]="popupVisisble" (nzOnCancel)="close()" (nzOnOk)="onSubmit(reviewForm.value)">
   <ng-container *ngTemplateOutlet="tempId"></ng-container>

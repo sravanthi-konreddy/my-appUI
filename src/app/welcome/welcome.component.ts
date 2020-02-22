@@ -83,6 +83,13 @@ export class WelcomeComponent implements OnInit {
     
   }
 
+  solveSudoku()
+  {
+    console.log("************************");
+    this.welcomeServi.solveSudoku()
+    .subscribe(res=>console.log(res));
+  }
+
   review(input:number,title:string)
   {
     this.popupVisisble=true;
