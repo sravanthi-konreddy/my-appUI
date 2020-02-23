@@ -16,6 +16,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { SudokuComponent } from './sudoku/sudoku.component';
 
 registerLocaleData(en);
 //import {NgbdModalContent} from './welcome/welcome.component';
@@ -26,7 +27,8 @@ registerLocaleData(en);
     LoginComponent,
     RegisterComponent,
     WelcomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    SudokuComponent
    // NgbModal,
   ],
   imports: [
@@ -45,6 +47,7 @@ registerLocaleData(en);
       { path: 'welcome', component: WelcomeComponent },
       { path: 'welcome/:id', component: WelcomeComponent },
       { path: 'logout', component: LogoutComponent },
+      { path: 'sudoku', component: SudokuComponent }
     ]),
     UserIdleModule.forRoot({idle: 60, timeout: 30, ping: 12}),
     NgZorroAntdModule,
