@@ -5,120 +5,121 @@
 <form [formGroup]="submitTableForm"  (ngSubmit)="onSubmitTable(submitTableForm.value)">
     
 <div align="center">
-    
+    <h3 *ngIf="!submitted" style="color:red">Enter Sudoku:</h3>
+    <h3 *ngIf="submitted" style="color:green">Solution is Here:</h3>
     <div >
         
-        <span><input  type="number" formControlName="zero0"  style="text-align:center;width: 50px"  /></span>
-       <span><input type="number" formControlName="zero1" style="text-align:center;width: 50px" /></span>
-       <span><input type="number" formControlName="zero2" style="text-align:center;width: 50px;border-right: 2px solid black;"/></span>
-       <span><input type="number" formControlName="zero3" style="text-align:center;width: 50px"  /></span>
-       <span><input type="number" formControlName="zero4" style="text-align:center;width: 50px"  /></span>
-       <span><input type="number" formControlName="zero5" style="text-align:center;width: 50px;border-right: 2px solid black;"/></span>
-       <span><input type="number" formControlName="zero6" style="text-align:center;width: 50px"/></span>
-       <span><input type="number" formControlName="zero7" style="text-align:center;width: 50px" /></span>
-       <span><input type="number" formControlName="zero8" style="text-align:center;width: 50px"/></span>      
+        <span><input  type="number" id="zero0" formControlName="zero0"  style="text-align:center;width: 50px"   /></span>
+       <span><input type="number" id="zero1" formControlName="zero1" style="text-align:center;width: 50px"  /></span>
+       <span><input type="number" id="zero2" formControlName="zero2" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
+       <span><input type="number" id="zero3" formControlName="zero3" style="text-align:center;width: 50px"   /></span>
+       <span><input type="number" id="zero4" formControlName="zero4" style="text-align:center;width: 50px"   /></span>
+       <span><input type="number" id="zero5" formControlName="zero5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
+       <span><input type="number" id="zero6" formControlName="zero6" style="text-align:center;width: 50px" /></span>
+       <span><input type="number" id="zero7" formControlName="zero7" style="text-align:center;width: 50px"  /></span>
+       <span><input type="number" id="zero8" formControlName="zero8" style="text-align:center;width: 50px" /></span>      
         
     </div>
 
     <div >
-        <span><input type="number" formControlName="one0" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="one1" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="one2" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
-        <span><input type="number" formControlName="one3" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="one4" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="one5" style="text-align:center;width: 50px;border-right: 2px solid black;"/></span>
-        <span><input type="number" formControlName="one6" style="text-align:center;width: 50px"  /></span>
-        <span><input type="number" formControlName="one7" style="text-align:center;width: 50px"  /></span>
-        <span><input type="number" formControlName="one8" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="one0" formControlName="one0" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="one1" formControlName="one1" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number"id="one2"  formControlName="one2" style="text-align:center;width: 50px;border-right: 2px solid black;"   /></span>
+        <span><input type="number" id="one3" formControlName="one3" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="one4" formControlName="one4" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number"id="one5" formControlName="one5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
+        <span><input type="number" id="one6" formControlName="one6" style="text-align:center;width: 50px"   /></span>
+        <span><input type="number" id="one7" formControlName="one7" style="text-align:center;width: 50px"   /></span>
+        <span><input type="number" id="one8" formControlName="one8" style="text-align:center;width: 50px"   /></span>
     </div>
 
     <div >
-        <span  ><input  type="number" formControlName="two0"  style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two1" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two2" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;" /></span>
-        <span ><input type="number" formControlName="two3" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two4" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two5" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two6" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
-        <span ><input type="number" formControlName="two7" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span ><input type="number" formControlName="two8" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
+        <span  ><input  type="number" id="two0" formControlName="two0"  style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span ><input type="number" id="two1" formControlName="two1" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span ><input type="number" id="two2" formControlName="two2" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"  /></span>
+        <span ><input type="number" id="two3" formControlName="two3" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span ><input type="number" id="two4" formControlName="two4" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span ><input type="number" id="two5" formControlName="two5" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"   /></span>
+        <span ><input type="number" id="two6" formControlName="two6" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
+        <span ><input type="number" id="two7" formControlName="two7" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span ><input type="number" id="two8" formControlName="two8" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
     </div>
 
     <div >
-        <span><input type="number" formControlName="three0" style="text-align:center;width: 50px"  /></span>
-        <span><input type="number" formControlName="three1" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="three2"  style="text-align:center;width: 50px;border-right: 2px solid black;"/></span>
-        <span><input type="number" formControlName="three3" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="three4" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="three5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="three6" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="three7" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="three8" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="three0" formControlName="three0" style="text-align:center;width: 50px"   /></span>
+        <span><input type="number" id="three1" formControlName="three1" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="three2" formControlName="three2"  style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
+        <span><input type="number" id="three3" formControlName="three3" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="three4" formControlName="three4" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="three5" formControlName="three5" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="three6" formControlName="three6" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="three7" formControlName="three7" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="three8" formControlName="three8" style="text-align:center;width: 50px"  /></span>
    </div>
 
     <div >
-        <span><input type="number" formControlName="four0" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="four1" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="four2" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="four3" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="four4" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="four5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="four6" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="four7" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="four8" style="text-align:center;width: 50px"/></span>
+        <span><input type="number" id="four0" formControlName="four0" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="four1" formControlName="four1" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="four2" formControlName="four2" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="four3" formControlName="four3" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="four4" formControlName="four4" style="text-align:center;width: 50px"   /></span>
+        <span><input type="number" id="four5" formControlName="four5" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="four6" formControlName="four6" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="four7" formControlName="four7" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="four8" formControlName="four8" style="text-align:center;width: 50px" /></span>
    </div>
 
     <div >
-        <span><input type="number" formControlName="five0" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
-        <span><input type="number" formControlName="five1" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
-        <span><input type="number" formControlName="five2" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="five3" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
-        <span><input type="number" formControlName="five4" style="text-align:center;width: 50px;border-bottom: 2px solid black;"/></span>
-        <span><input type="number" formControlName="five5" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"/></span>
-        <span><input type="number" formControlName="five6" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
-        <span><input type="number" formControlName="five7" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
-        <span><input type="number" formControlName="five8" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
+        <span><input type="number" id="five0" formControlName="five0" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span><input type="number" id="five1" formControlName="five1" style="text-align:center;width: 50px;border-bottom: 2px solid black;"   /></span>
+        <span><input type="number" id="five2" formControlName="five2" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="five3" formControlName="five3" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
+        <span><input type="number" id="five4" formControlName="five4" style="text-align:center;width: 50px;border-bottom: 2px solid black;" /></span>
+        <span><input type="number" id="five5" formControlName="five5" style="text-align:center;width: 50px;border-bottom: 2px solid black;border-right: 2px solid black;"/></span>
+        <span><input type="number" id="five6" formControlName="five6" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
+        <span><input type="number" id="five7" formControlName="five7" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
+        <span><input type="number" id="five8" formControlName="five8" style="text-align:center;width: 50px;border-bottom: 2px solid black;"  /></span>
     </div>
 
     <div >
-        <span><input type="number" formControlName="six0" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="six1" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="six2" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="six3" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="six4" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="six5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="six6" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="six7" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="six8" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="six0"  formControlName="six0" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="six1" formControlName="six1" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="six2" formControlName="six2" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="six3" formControlName="six3" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="six4" formControlName="six4" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="six5" formControlName="six5" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="six6" formControlName="six6" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="six7" formControlName="six7" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="six8" formControlName="six8" style="text-align:center;width: 50px"   /></span>
     </div>
 
     <div >
-        <span><input type="number" formControlName="seven0" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="seven1" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="seven2" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="seven3" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="seven4" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="seven5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="seven6" style="text-align:center;width: 50px" /></span>
-        <span><input type="number" formControlName="seven7" style="text-align:center;width: 50px"/></span>
-        <span><input type="number" formControlName="seven8" style="text-align:center;width: 50px"/></span>
+        <span><input type="number" id="seven0" formControlName="seven0" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="seven1" formControlName="seven1" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="seven2" formControlName="seven2" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="seven3" formControlName="seven3" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="seven4" formControlName="seven4" style="text-align:center;width: 50px"   /></span>
+        <span><input type="number" id="seven5" formControlName="seven5" style="text-align:center;width: 50px;border-right: 2px solid black;"  /></span>
+        <span><input type="number" id="seven6" formControlName="seven6" style="text-align:center;width: 50px"  /></span>
+        <span><input type="number" id="seven7" formControlName="seven7" style="text-align:center;width: 50px" /></span>
+        <span><input type="number" id="seven8" formControlName="seven8" style="text-align:center;width: 50px" /></span>
     </div>
 
     <div>
-        <span><input type="number" formControlName="eight0" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight1" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight2" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="eight3" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight4" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight5" style="text-align:center;width: 50px;border-right: 2px solid black;" /></span>
-        <span><input type="number" formControlName="eight6" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight7" style="text-align:center;width: 50px;" /></span>
-        <span><input type="number" formControlName="eight8" style="text-align:center;width: 50px;" /></span>
+        <span><input type="number" id="eight0" formControlName="eight0" style="text-align:center;width: 50px;"   /></span>
+        <span><input type="number" id="eight1" formControlName="eight1" style="text-align:center;width: 50px;"   /></span>
+        <span><input type="number" id="eight2" formControlName="eight2" style="text-align:center;width: 50px;border-right: 2px solid black;"   /></span>
+        <span><input type="number" id="eight3" formControlName="eight3" style="text-align:center;width: 50px;"  /></span>
+        <span><input type="number" id="eight4" formControlName="eight4" style="text-align:center;width: 50px;"   /></span>
+        <span><input type="number" id="eight5" formControlName="eight5" style="text-align:center;width: 50px;border-right: 2px solid black;"   /></span>
+        <span><input type="number" id="eight6" formControlName="eight6" style="text-align:center;width: 50px;"  /></span>
+        <span><input type="number" id="eight7" formControlName="eight7" style="text-align:center;width: 50px;"  /></span>
+        <span><input type="number" id="eight8" formControlName="eight8" style="text-align:center;width: 50px;" /></span>
 
 </div>
 </div>
 
-<div align="center"> <button type="submit">Submit</button></div>
+<div align="center" *ngIf="!submitted"> <button type="submit">Submit</button></div>
 
 
 </form>

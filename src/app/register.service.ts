@@ -14,7 +14,7 @@ export class RegisterService {
 
   registerUser(user:LoginUser):Observable<RegisterResponse>
   {
-    return this.http.post<RegisterResponse>("http://localhost:8080/demoapi/api/registerUser",user)
+    return this.http.post<RegisterResponse>("http://localhost:8081/registerUser",user)
     
   }
 

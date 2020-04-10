@@ -10,9 +10,12 @@ import { FormGroup, FormControl ,Validators} from '@angular/forms';
 //import {}from '../../'
 import { filter, map, } from 'rxjs/operators';
 import { pipe, range, timer, zip } from 'rxjs';
+import { SudokuService } from '../sudoku.service';
+import { LoginUser } from '../model/loginUser';
 
 
 import {NgbModal, ModalDismissReasons,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { LoginUserAuth } from '../model/loginUserAuth';
 
 /*export class NgbdModalContent {
   @Input() name;
@@ -26,7 +29,10 @@ import {NgbModal, ModalDismissReasons,NgbActiveModal} from '@ng-bootstrap/ng-boo
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+
+ 
   user: any;
+  password:any;
   data:Book[];
   popupVisisble:boolean=false;
   currentRate:number=0;
@@ -38,6 +44,9 @@ export class WelcomeComponent implements OnInit {
   successMsg:string;
   successId:number;
   booktitle:string;
+
+  tokenStr:String;
+  loginUserAuth:LoginUserAuth;
 
   reviewForm=new FormGroup({
     
@@ -55,9 +64,14 @@ export class WelcomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,private userIdle: UserIdleService,private _authService: MyAuthService, 
-    private welcomeServi: WelcomeService,private modalService: NgbModal,private reviewBookServc:ReviewBookService
-   ) {this.user=this.route.snapshot.paramMap.get('id');
+    private welcomeServi: WelcomeService,private modalService: NgbModal,private reviewBookServc:ReviewBookService,private sudoServ:SudokuService
+   ) {this.user=this.route.snapshot.paramMap.get('username');
+   this.password=this.route.snapshot.paramMap.get('password');
    console.log(this.user);
+   console.log("password::::"+this.password)
+   this.loginUserAuth={username:'',password:''};
+   this.loginUserAuth.username=this.user;
+   this.loginUserAuth.password=this.password;
   }
 
   ngOnInit() {
@@ -76,9 +90,14 @@ export class WelcomeComponent implements OnInit {
     // Start watch when time is up.
     this.userIdle.onTimeout().subscribe(()=>{this.router.navigate(['logout']);console.log('time up');});
 
-    
-    this.welcomeServi.getData()
+    this.sudoServ.authenticateUser(this.loginUserAuth)
+   .subscribe(res=>{this.tokenStr=res;console.log("tokenStr::"+this.tokenStr);
+   this.welcomeServi.getData(this.tokenStr)
     .subscribe(data1=>this.data=data1);
+  });
+
+    
+   
 
     
   }
@@ -107,6 +126,8 @@ export class WelcomeComponent implements OnInit {
 
   onSubmit(val)
   {
+    console.log(this.user);
+    console.log(this.password);
     this.reviewBook={username:'',id:0,rating:0,review:''}
     console.log("user id::"+this.user)
     console.log('book id::'+this.bookID);
@@ -114,7 +135,9 @@ export class WelcomeComponent implements OnInit {
     console.log("insubmit!!!!")
     this.successId=this.bookID;
     this.reviewBook={username:this.user,id:this.bookID,rating:val.ctrl,review:val.review1};
-    this.reviewBookServc.reviewBook(this.reviewBook)
+    this.sudoServ.authenticateUser(this.loginUserAuth)
+   .subscribe(res=>{this.tokenStr=res;console.log("tokenStr::"+this.tokenStr);
+   this.reviewBookServc.reviewBook(this.reviewBook)
     .subscribe(res=>{
       if(res==true)
       {
@@ -135,6 +158,8 @@ export class WelcomeComponent implements OnInit {
           this.reviewBook={username:'',id:0,rating:0,review:''}
       }
     })
+  });
+    
   }
 
 }

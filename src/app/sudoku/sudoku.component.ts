@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Sudo } from '../model/sudoku';
 import { SudokuService } from '../sudoku.service';
+import { ActivatedRoute } from '@angular/router';
+import { LoginUserAuth } from '../model/loginUserAuth';
+import { isNull, isUndefined } from 'util';
 
 @Component({
   selector: 'app-sudoku',
@@ -10,12 +13,27 @@ import { SudokuService } from '../sudoku.service';
 })
 export class SudokuComponent implements OnInit {
 
+  tokenStr:String;
+  loginUserAuth:LoginUserAuth
   submitTableForm;
   sudokuInput:Sudo;
+  user:any;
+  password:any;
+  submitted:boolean;
   
 
 
-  constructor(private formBuilder: FormBuilder,private sudoServ:SudokuService) {
+  constructor(private formBuilder: FormBuilder,private sudoServ:SudokuService,private route: ActivatedRoute) {
+    this.user=this.route.snapshot.paramMap.get('username');
+   this.password=this.route.snapshot.paramMap.get('password');
+   this.loginUserAuth={username:'',password:''};
+   this.loginUserAuth.username=this.user;
+   this.loginUserAuth.password=this.password;
+   this.tokenStr='';
+   this.submitted=false;
+   console.log(this.user);
+   console.log("password::::"+this.password)
+  
 
     this.submitTableForm = this.formBuilder.group({
       zero0:new FormControl(''),
@@ -137,11 +155,14 @@ export class SudokuComponent implements OnInit {
     this.sudokuInput={inputArray:[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]};
     console.log("in sudoku component")
+    console.log("the user auth::")
+    this.sudoServ.authenticateUser(this.loginUserAuth)
+   .subscribe(res=>{this.tokenStr=res;console.log("tokenStr::"+this.tokenStr)});
   }
 
   onSubmitTable(val)
   {
-    
+  
    this.sudokuInput.inputArray[0][0]=val.zero0;
    this.sudokuInput.inputArray[0][1]=val.zero1;
    this.sudokuInput.inputArray[0][2]=val.zero2;
@@ -232,10 +253,31 @@ export class SudokuComponent implements OnInit {
    this.sudokuInput.inputArray[8][7]=val.eight7;
    this.sudokuInput.inputArray[8][8]=val.eight8;
 
+   this.submitted=true;
+
+   console.log( val)
+   for(let i in val )
+   {
+console.log(i)
+    console.log(val[i])
+    console.log(isNull(val[i]) ||isUndefined(val[i])||(val[i].length==0))
+     if(!(isNull(val[i]) ||isUndefined(val[i])||(val[i].length==0)))
+     {
+      console.log(i)
+      console.log(i.toString)
+      var j=String(i.toString);
+       var tag=document.getElementById(i)
+       console.log(tag)
+       tag.style.background="yellow"
+       
+     }
+   }
    
   
-   this.sudoServ.solveSudoku(this.sudokuInput)
+   this.sudoServ.solveSudoku(this.sudokuInput,this.tokenStr)
    .subscribe(res=>{
+     console.log("input array::::"+res)
+     
     this.submitTableForm.get('zero0').setValue(res.inputArray[0][0]);
     this.submitTableForm.get('zero1').setValue(res.inputArray[0][1]);
     this.submitTableForm.get('zero2').setValue(res.inputArray[0][2]);
