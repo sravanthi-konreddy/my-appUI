@@ -137,7 +137,7 @@ export class WelcomeComponent implements OnInit {
     this.reviewBook={username:this.user,id:this.bookID,rating:val.ctrl,review:val.review1};
     this.sudoServ.authenticateUser(this.loginUserAuth)
    .subscribe(res=>{this.tokenStr=res;console.log("tokenStr::"+this.tokenStr);
-   this.reviewBookServc.reviewBook(this.reviewBook)
+   this.reviewBookServc.reviewBook(this.reviewBook, this.tokenStr)
     .subscribe(res=>{
       if(res==true)
       {
