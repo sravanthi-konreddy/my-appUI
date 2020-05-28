@@ -2,16 +2,41 @@
 <p>
   welcome {{user}}
 </p>
+<div >
+  <button class="btn btn-success" (click)="navigateToAddBook()">Add Book</button>
+  
+  &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-danger">Delete Book</button>
+      &nbsp; &nbsp; &nbsp;
+      <a routerLink="/logout" ><button class="btn btn-primary pull-right">logout</button></a>
+      </div>
+
 <div *ngIf="success ">{{successMsg}} for {{booktitle}}</div>
-<div *ngFor="let book of data" class=" col col-sm ">
+<div class ="row">
+?<!--<div *ngFor="let book of data" class=" col col-sm-3">
   <img src="\assets\images\{{book.id}}.JPG" alt="image not found" height="120" width="100">
   <p>{{book.id}}</p>
   <p>{{book.title}}</p>
   <p>{{book.author}}</p>
   <button (click)="review(book.id,book.title)" class="btn btn-secondary">Review</button>
+</div>-->
+<!--<div *ngIf="gotResponse">-->
+  <div *ngFor="let data1 of files" class=" col col-sm-2">
+    <br/>
+      <img src="data:image/jpg;base64,{{data1.base64Image}}" alt="image not found" height="120" width="100"/>
+      <p>{{data1.id}}</p>
+      <p>{{data1.title}}</p>
+      <p>{{data1.author}}</p>
+      <button (click)="review(data1.id,data1.title)" class="btn btn-secondary">Review</button>
+      
+  </div>
+<!--</div>-->
 </div>
-<button (click)="solveSudoku()">solve</button>
-<a routerLink="/logout"><button>logout</button></a>
+&nbsp;
+<!--<div >
+<a routerLink="/logout" ><button class="btn btn-primary pull-right">logout</button></a>
+
+</div>-->
 
 <ng-template #tempId >
   

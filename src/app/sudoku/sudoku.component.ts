@@ -268,7 +268,7 @@ console.log(i)
       var j=String(i.toString);
        var tag=document.getElementById(i)
        console.log(tag)
-       tag.style.background="yellow"
+       tag.style.background="cyan"
        
      }
    }
@@ -367,6 +367,11 @@ console.log(i)
     this.submitTableForm.get('eight6').setValue(res.inputArray[8][6]);
     this.submitTableForm.get('eight7').setValue(res.inputArray[8][7]);
     this.submitTableForm.get('eight8').setValue(res.inputArray[8][8]);
+
+    var inputs = document.getElementsByTagName("input"); 
+    for (var i = 0; i < inputs.length; i++) { 
+        inputs[i].disabled =true;
+    } 
    })
   
    console.log(this.submitTableForm['one1'])

@@ -1,0 +1,37 @@
+<div class="form-group container-fluid h-100">
+<form [formGroup]="addBook" (ngSubmit)="submitBook()" class="form-group text-center border border-light p-5">
+    
+
+    <div class ="form-group">
+    <label>Book Title
+    <input type="text" formControlName="bookTitle" class="form-control">
+    </label>
+</div>
+<div class ="form-group">
+    <label>Book Author
+    <input type="text" formControlName="bookAuthor" class="form-control">
+</label>
+</div>
+<div class ="form-group" >
+    <span>Upload Cover Page</span>
+&nbsp;
+    <input formControlName="coverPage" class="file-input" type="file" (change)="handleFileInput($event.target.files)" class="form-control">
+  </div>
+
+  <div class="form-group">
+  <button type="submit"class="btn btn-secondary">Submit</button>
+  </div>
+
+<!--
+  <button (click)="getFiles()" class="btn btn-secondary">Get Files</button>
+    <div *ngIf="gotResponse">
+        <div *ngFor="let data1 of files">
+            <p>{{data1.id}}</p>
+            <p>{{data1.title}}</p>
+            <p>{{data1.author}}</p>
+            <img src="data:image/jpg;base64,{{data1.base64Image}}" width="240" height="300"/>
+            
+        </div>
+    </div>-->
+</form>
+</div>

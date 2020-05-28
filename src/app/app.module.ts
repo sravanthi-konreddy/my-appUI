@@ -19,6 +19,7 @@ import en from '@angular/common/locales/en';
 import { SudokuComponent } from './sudoku/sudoku.component';
 
 import{LoginUserAuth} from './model/loginUserAuth';
+import { AddbookComponent } from './addbook/addbook.component';
 
 registerLocaleData(en);
 //import {NgbdModalContent} from './welcome/welcome.component';
@@ -30,7 +31,8 @@ registerLocaleData(en);
     RegisterComponent,
     WelcomeComponent,
     LogoutComponent,
-    SudokuComponent
+    SudokuComponent,
+    AddbookComponent
    // NgbModal,
   ],
   imports: [
@@ -49,7 +51,9 @@ registerLocaleData(en);
       { path: 'welcome', component: WelcomeComponent },
       { path: 'welcome/:username/:password', component: WelcomeComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'sudoku/:username/:password', component: SudokuComponent }
+      { path: 'sudoku/:username/:password', component: SudokuComponent },
+      { path: 'addBook', component: AddbookComponent },
+      { path: 'addBook/:username/:password', component: AddbookComponent }
     ]),
     UserIdleModule.forRoot({idle: 60, timeout: 30, ping: 12}),
     NgZorroAntdModule,

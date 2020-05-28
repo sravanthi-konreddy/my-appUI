@@ -12,6 +12,8 @@ import { filter, map, } from 'rxjs/operators';
 import { pipe, range, timer, zip } from 'rxjs';
 import { SudokuService } from '../sudoku.service';
 import { LoginUser } from '../model/loginUser';
+import { AddbookService } from '../addbook.service';
+import { BookDetails }from '../model/bookDetails';
 
 
 import {NgbModal, ModalDismissReasons,NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -30,6 +32,8 @@ import { LoginUserAuth } from '../model/loginUserAuth';
 })
 export class WelcomeComponent implements OnInit {
 
+  files: BookDetails[];
+  gotResponse: boolean=false;
  
   user: any;
   password:any;
@@ -64,7 +68,9 @@ export class WelcomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,private userIdle: UserIdleService,private _authService: MyAuthService, 
-    private welcomeServi: WelcomeService,private modalService: NgbModal,private reviewBookServc:ReviewBookService,private sudoServ:SudokuService
+    private welcomeServi: WelcomeService,private modalService: NgbModal,private reviewBookServc:ReviewBookService
+    ,private sudoServ:SudokuService,
+    private fileUploadService:AddbookService
    ) {this.user=this.route.snapshot.paramMap.get('username');
    this.password=this.route.snapshot.paramMap.get('password');
    console.log(this.user);
@@ -92,8 +98,10 @@ export class WelcomeComponent implements OnInit {
 
     this.sudoServ.authenticateUser(this.loginUserAuth)
    .subscribe(res=>{this.tokenStr=res;console.log("tokenStr::"+this.tokenStr);
-   this.welcomeServi.getData(this.tokenStr)
-    .subscribe(data1=>this.data=data1);
+   //this.welcomeServi.getData(this.tokenStr)
+    //.subscribe(data1=>this.data=data1);
+    this.getFiles(this.tokenStr);
+    
   });
 
     
@@ -101,6 +109,16 @@ export class WelcomeComponent implements OnInit {
 
     
   }
+
+  navigateToAddBook(){
+    //this.sudoServ.authenticateUser(this.loginUserAuth)
+    //.subscribe(res=>{})
+    console.log("in navigate to add book method::::")
+    console.log("username::"+this.loginUserAuth.username)
+    console.log("password:::"+this.loginUserAuth.password)
+    this.router.navigate(['/addBook',this.loginUserAuth.username,this.loginUserAuth.password],{skipLocationChange: true,replaceUrl:false});
+  }
+
 
   solveSudoku()
   {
@@ -162,4 +180,13 @@ export class WelcomeComponent implements OnInit {
     
   }
 
+  getFiles(token:String){
+    console.log("in getfiles!!..")
+    this.fileUploadService.getFiles(token).subscribe(data => {this.files=data;
+      console.log(this.files);
+      this.gotResponse=true;
+  
+    })
+
+}
 }

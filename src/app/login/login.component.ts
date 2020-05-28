@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,6 +15,8 @@ import { pipe } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  isLoggedIn:boolean=false;
 
   tokenStr:String;
   loginUserAuth:LoginUserAuth
@@ -62,6 +64,8 @@ export class LoginComponent implements OnInit {
       {
         if(this.loginForm.value['area']=='book')
         {
+         //this.loginServ.currLoggedIn.subscribe(message => this.isLoggedIn=message);
+         //this.loginServ.changeIsLoggedInToTrue();
           this.router.navigate(['/welcome',this.loginForm.value["username"],this.loginForm.value["password"]],{skipLocationChange: true,replaceUrl:false});
         }
         else if(this.loginForm.value['area']=='play')
